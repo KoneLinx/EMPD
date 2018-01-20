@@ -6,6 +6,7 @@ This may look messy. I'm heaven't finished yet. >>> but it works...
 # Install
 
 place files in /home/$USER/.EMPD/
+
 place file `empd` in /home/$USER/bin/
 
 # Easy install
