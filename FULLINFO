@@ -1,0 +1,131 @@
+
+
+	EMPD Manual
+
+
+Synopsis
+
+		$	empd (d) --<operation> [options] [variables]
+		
+		OR raw:		$ export IN="--<operation> [options] [variables]"; bash /home/${USER}/.EMPD/EMPD.sh
+
+Daemon
+
+	d									DAEMON: When you don't want any output. Will not display any help or info.
+
+Info
+
+
+	A script made to play music in the background and to have full control over it.
+	Easy and controlable.
+	Nothing special, but it has the basics.
+	
+	Not in the slightest based on MPD (Music Player Daemon).
+
+	THIS SOFTWARE IS PROVIDED "AS IS" AND PROVIDES, AS FAR AS APPLICABLE LAWS PERMIT, NO WARRANTY.
+	THIS SOFTWARE MAKES USE OF BASH, MPLAYER AND ALL THEIR INCLUDED APPLICATIONS.
+		WHEN USING THIS SOFTWAR, YOU AGREE TO THEIR TERMS AS WELL AS THE GPLv2 AND GPLv3 LICENCES.
+	THIS SOFTWARE, PORVIDED BY THE CREATOR, IS FREE OF CHARGE.
+	
+	Any reports of bugs or questions can be sent to the following e-mail adress:
+	> konelinx@posteo.net
+	
+
+Operations
+
+
+	${EXC_START}						Start playback. Not used if another operation is specified. If already running: changed to \"${EXC_NEXT}\"
+	
+	${EXC_STOP}						Stop playback. If used with other operations, only this one takes effect.
+	
+	${EXC_NEXT}						Next track.
+	
+	${EXC_PREV}						Previous track. If \"${EXC_NEXT}\", no effect.
+
+	${EXC_SET} <nr>					Change track to Nth number in the list 
+
+	${EXC_SET} <string>					Search for <string> in th eplaylist and move to it's position.
+							If multiple results, one will be randomly selected. Given strings are taken literaly.
+							Examples: One_Look (to find *One Look*)  Shadow (to find *Shadow*)  Shadow_of (to find *Shadow of*)
+
+	--nothing					Does absolutly nothing.
+	
+
+Options							Used with \"${EXC_START}\" or \"${SET_OPT}\"
+
+
+	${OPT_CONT}					Continue where previous session left off. Needs \"${EXC_START}\"
+	
+	${OPT_SHUFFLE}					Shuffle Playlist. If not, Play alphabeticaly.
+	
+	${OPT_REPEAT}					Repeat the playlist when finished.
+
+	${OPT_RESHUFFLE}					Reshuffle when the playlist repeats. Needs \"${OPT_REPEAT}\"
+
+	${OPT_DECENT_OUT}					Creates a more decent name for music files with a wierd, long or difficult name. Does not rename the files.
+							Good output not garanteed.
+								Exemple :			_5BGenre_5D_-_Artist_-_Song_name__5BExtra_stuff_5D.ext
+								Not used:			 5BGenre 5D - Artist - Song name  5BExtra stuff 5D	
+								If used : 			Genre - Artist - Song name
+
+	${OPT_OPT}						Update options when EMPD is already running. No \"${EXC_START}\" needed.
+
+Variables						Used with \"${EXC_START}\"
+
+
+	${VAR_DIR} </path/to/maps>				Directory containing all specified maps. If not specified: /home/${USER}/Music/
+	
+	${VAR_MUSIC_MAP} <name>				Map name, found in \"${VAR_DIR}\" specified directory that contains all music files. default: not used
+
+	${VAR_MUSIC_DIR} </path/to/map>			Path to directory that contains all music files. no \"${VAR_MUSIC_MAP}\" needed.
+	
+	${VAR_ICON_MAP} <name>				Map name, found in \"{VAR_DIR}\" specified directory that contains all icons.
+							default: \"Icons\" 
+	
+	${VAR_ICON_PATH} </path/to/map>					Path to directory that contains all music files. no \"${VAR_ICON_MAP}\" needed.
+
+	${VAR_DEF_ICON} <name>			Name of default music icon file used for notifications found in \"${icondir}\". default: \"_.icon\"
+
+	${VAR_DEF_ICON_DIR}	</path/to/map>			Path to default icon file.
+	
+
+Detailed info
+
+	All file are found in /home/${USER}/.EMPD/
+
+	"_.icon" is the icon file used as standard music icon in notifications.
+	
+	A list of music names in order can be found in ${musicdir}/playlist (textfile)
+	A list of music filenames in order can be found in ${scriptdir}/filelist (textfile)
+	The number of the currently playing track can be found in the first line of ${musicdir}/playlist (textfile)
+		number can be obtained with: $ head -n 1 ${musicdir}/playlist
+		Examples:
+			
+			current track:	echo $(sed -n \"\$((\$(head -n 1 ${scriptdir}/filelist)+1)){p;q;}\" < ${musicdir}/playlist)
+			It's file:	echo \"${musicdir}/\$(sed -n \"\$((\$(head -n 1 ${scriptdir}/filelist)+1)){p;q;}\"<${scriptdir}/filelist)\"
+	
+			next track:	echo \$(sed -n \"\$((\$(head -n 1 ${scriptdir}/filelist)+2)){p;q;}\" < ${musicdir}/playlist)
+			
+			previous track:	echo \$(sed -n \"\$((\$(head -n 1 ${scriptdir}/filelist))){p;q;}\" < ${musicdir}/playlist)
+
+	
+Advanced options
+
+
+	${VAR_SCRIPT_MAP} <name>				Map name, found in \"${VAR_DIR}\" specified directory that contains all shell scripts used. default none
+
+	${VAR_SCRIPT_PATH} </path/to/map/>				Path to directory that contains all scripts. no \"${VAR_SCRIPT_MAP}\" needed. default: /home/${USER}/.EMPD/
+							Implemented scripts:  ### FileSelect.sh  FileHTMLIndex.sh  RD.sh  Start.sh  End.sh  Next.sh  EMPD.sh ###
+
+	--make						Creates a playlist and filelist file. Same as option \"${OPT_SHUFFLE}\" in a normal run.
+	
+Example:
+
+empd --all-info		get this page
+empd d --start --decent-output --shuffle --music-map All		start daemon with shuffle and decent output in map ~/Music/All/
+empd d --options --repeat										enable option "repeat" if you forgot to use it in the example shown above.
+
+
+->NothingPowersAvailable<-
+
+#end

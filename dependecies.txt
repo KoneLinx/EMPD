@@ -1,0 +1,8 @@
+python libraries and PIP:
+
+sudo apt install python python-apipkg python-pip python-pip-whl
+pip install google-api-python-client
+
+MPlayer:
+
+sudo apt install mplayer

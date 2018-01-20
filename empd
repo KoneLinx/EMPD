@@ -1,0 +1,8 @@
+#!/bin/bash
+export IN=$@
+IN=" ${IN} "
+if [ "${IN}" != "${IN%' d '*}" ]
+then nohup bash /home/$USER/.EMPD/EMPD.sh > /dev/null 2>&1 < /dev/null &
+else bash /home/$USER/.EMPD/EMPD.sh
+fi
+exit

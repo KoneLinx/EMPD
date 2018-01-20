@@ -1,0 +1,86 @@
+help output:
+--help
+
+Synopsis
+
+		$	empd (d) --<operation> [options] [variables]
+		
+		OR raw:		$ export IN="--<operation> [options] [variables]"; bash /home/${USER}/.EMPD/EMPD.sh
+
+Daemon
+
+	d									DAEMON: When you don't want any output. Will not display any help or info.
+
+Operations
+
+
+	${EXC_START}						Start playback. Not used if another operation is specified.
+							If EMPD is already running, Same effect as \"${EXC_NEXT}\"
+	
+	${EXC_STOP}						Stop playback. If used with other operations, only this one takes effect.
+	
+	${EXC_NEXT}						Next track.
+	
+	${EXC_PREV}						Previous track.
+
+	${EXC_SET} <nr>					Change track to Nth number in the list 
+
+	${EXC_SET} <string>					Search for <string> in th eplaylist and move to it's position.
+							If multiple results, one will be randomly selected. Given strings are taken literaly.
+							Examples: One_Look (to find *One Look*)  Shadow (to find *Shadow*)  Shadow_of (to find *Shadow of*)
+
+	--nothing					Does absolutly nothing.
+	
+
+	Order of power:					${EXC_STOP}  >  ${EXC_SET}  >  ${EXC_NEXT}  >  ${EXC_PREV}  >  ${EXC_START}
+
+
+Options							Used with \"${EXC_START}\" or \"${SET_OPT}\"
+
+
+	${OPT_CONT}					Continue where previous session left off. Used with \"${EXC_START}\"
+	
+	${OPT_SHUFFLE}					Shuffle Playlist. If not, Play alphabeticaly.
+	
+	${OPT_REPEAT}					Repeat the playlist when finished.
+
+	${OPT_RESHUFFLE}					Reshuffle when the playlist repeats. Needs \"${OPT_REPEAT}\"
+
+	${OPT_DECENT_OUT}					Creates a more decent name for music files with a wierd, long or difficult name. Does not rename the files.
+							Good output not garanteed.
+								Exemple :			_5BGenre_5D_-_Artist_-_Song_name__5BExtra_stuff_5D.ext
+								Not used:			5BGenre 5D - Artist - Song name  5BExtra stuff 5D	
+								If used : 			Genre - Artist - Song name
+
+	${OPT_OPT}						update options when the player is already running. No \"${EXC_START}\" needed.
+
+
+Variables						Used with \"${EXC_START}\" or \"${SET_VAR}\"
+
+
+	${VAR_DIR} </path/to/maps>				Directory containing all specified maps. If not specified: /home/${USER}/Music/
+	
+	${VAR_MUSIC_MAP} <name>				Map name, found in \"${VAR_DIR}\" specified directory that contains all music files. default: not used
+
+	${VAR_MUSIC_DIR} </path/to/map>			Path to directory that contains all music files. no \"${VAR_MUSIC_MAP}\" needed.
+	
+	${VAR_ICON_MAP} <name>				Map name, found in \"{VAR_DIR}\" specified directory that contains all icons.
+							default: \"Icons\" 
+	
+	${VAR_ICON_DIR} </path/to/map>			Path to directory that contains all music icon files. no \"${VAR_ICON_MAP}\" needed.
+
+	${VAR_DEF_ICON} <name>			Name of default music icon file used for notifications found in \"${icondir}\". default: \"_.icon\"
+
+	${VAR_DEF_ICON_DIR}	</path/to/map>			Path to default icon file.
+	
+	
+Help							Does not work with "d"
+
+	${GET_FULL}						Detailed help list. Get everything listed.
+	
+	${GET_INFO}						This help page
+	
+	${GET_H}						This page in a simplified form.
+
+
+#end
