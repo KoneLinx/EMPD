@@ -23,9 +23,11 @@ place file `empd` in /home/$USER/bin/
 
 # Easy install
 
-in progress
+in progress DOES NOT WORK YET
 
  ~ Made for dummies ~
+
+0) Open your terminal. What? press: Ctrl-Alt-F1
 
 1) Install the dependencies:
 
