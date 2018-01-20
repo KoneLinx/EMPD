@@ -87,56 +87,7 @@ messages;
 #-FUNCTIONS---START-------------------------------------------------------------------------------------------------
 
 function dotest {
-	find ${musicdir} -name '*.mp3' -o -name '*.wav' -o -name '*.flac' -o -name '*.mp4' -o -name '*.aac' > ${scriptdir}/filelist;
-	if [ "${IN}" != "${IN%${OPT_SHUFFLE}*}" ];
-	then sort -R ${scriptdir}/filelist -o ${scriptdir}/filelist; echo "random sort";
-	else sort ${scriptdir}/filelist -o ${scriptdir}/filelist; echo "sort acsending";
-	fi;
-	export tracks=$(($(wc -l < ${scriptdir}/filelist)+-1));
-	cat ${scriptdir}/filelist > ${scriptdir}/playlist;
-	sed -i '1 i \hello' ${scriptdir}/filelist;
-
-	echo "Playlist" > ${scriptdir}/playlist;
-	for ((x=2;x<=tracks;x++));
-		do
-		f=$(sed -n "${x}{p;q;}" ${scriptdir}/playlist);
-		if [ "${IN}" != "${IN%${OPT_DECENT_OUT}*}" ];
-			then
-			f=${f//120BPM/xxxBPM};
-			f=${f//[_%][0123456789ABCDEF][0123456789ABCDEF]/""};
-			f=${f//__/-};
-			f=${f//--/-};
-			f=${f//-/ - };
-			f=${f//_/ };
-			f=${f//  / };
-			f=${f//  / };
-			f=${f//  / };
-			f=${f//.flac/};
-			f=${f//.html/};
-			f=${f//.[azertyuiopqsdfghjklmwxcvbn1234567890][azertyuiopqsdfghjklmwxcvbn1234567890][azertyuiopqsdfghjklmwxcvbn123456790]/};
-			f=${f//[Ss]ubtitles/};
-			f=${f//[Mm]onstercat/};
-			f=${f//[Vv]ideo/};
-			f=${f//[EL]P/};
-			f=${f//[Ee]xclusive/};
-			f=${f//[Cc][Dd]/};
-			f=${f//[Rr]elease/};
-			f=${f//[Ll]yrics/};
-			f=${f//[Ll]yric/};
-			f=${f//[Dd]ownload/};
-			f=${f//[Oo]fficial/};
-			f=${f//FREE/};
-			f=${f//[Ff]ree/};
-			f=${f//[Mm]usic/};
-			f=${f//HQ/};
-			#f=${f//./ };
-			f=${f//xxxBPM/120bpm};
-			f=$(LC_ALL=C sed -r 's/^[^[:alpha:]]+//' <<< "$f");
-		fi
-		f=${f//_/ };
-		echo "$f" >> ${musicdir}/playlist;
-		echo $f;
-	done;
+	echo "No dev code to test";
 }
 
 function optopt {
