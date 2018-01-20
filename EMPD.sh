@@ -87,7 +87,7 @@ messages;
 #-FUNCTIONS---START-------------------------------------------------------------------------------------------------
 
 function dotest {
-	echo "No dev code to test";
+	echo "No dev code to test.";
 }
 
 function optopt {
