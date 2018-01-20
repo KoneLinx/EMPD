@@ -25,6 +25,8 @@ place file `empd` in /home/$USER/bin/
 
 in progress
 
+ ~ Made for dummies ~
+
 1) Install the dependencies:
 
 - Debian / Ubuntu / Raspbian / ...
