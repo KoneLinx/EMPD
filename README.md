@@ -1,7 +1,7 @@
 # EMPD
 Easy Music Player Daemon
 
-This may look messy. I'm heaven't finished yet. >>> but it works...
+This may look messy. I haven't finished yet. >>> but it works...
 
 # What you need
 
