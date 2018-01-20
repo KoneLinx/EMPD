@@ -27,7 +27,7 @@ in progress DOES NOT WORK YET
 
  ~ Made for dummies ~
 
-0) Open your terminal. What? press: Ctrl-Alt-F1
+0) Open your terminal. What? press: Ctrl-Alt-F1   Alt-F7 to go back
 
 1) Install the dependencies:
 
