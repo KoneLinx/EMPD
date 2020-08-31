@@ -1,3 +1,5 @@
+NOTICE: I haven't worked on this for years and this is a very old version. Chanes are, I'll never update it. Sorry :( But it had been a fun way to learn bash script :) !
+
 # EMPD
 Easy Music Player Daemon
 
